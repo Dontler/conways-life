@@ -1,4 +1,4 @@
-package com.dontler.entity;
+package com.dontler.life.entity;
 
 import java.util.List;
 
