@@ -1,11 +1,11 @@
 package com.dontler.life.entity;
 
-public class Coordinates {
+public class Point {
 
     private final int x;
     private final int y;
 
-    public Coordinates(int x, int y) {
+    public Point(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -22,8 +22,7 @@ public class Coordinates {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
-        Coordinates that = (Coordinates) o;
+        Point that = (Point) o;
 
         if (x != that.x) return false;
         return y == that.y;

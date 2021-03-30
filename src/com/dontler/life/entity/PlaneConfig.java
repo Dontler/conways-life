@@ -6,9 +6,9 @@ public class PlaneConfig {
 
     private final int width;
     private final int height;
-    private final List<PlanePlace> initialPlaces;
+    private final List<Cell> initialPlaces;
 
-    public PlaneConfig(int width, int height, List<PlanePlace> initialPlaces) {
+    public PlaneConfig(int width, int height, List<Cell> initialPlaces) {
         this.width = width;
         this.height = height;
         this.initialPlaces = initialPlaces;
@@ -22,7 +22,7 @@ public class PlaneConfig {
         return height;
     }
 
-    public List<PlanePlace> getInitialPlaces() {
+    public List<Cell> getInitialPlaces() {
         return initialPlaces;
     }
 }

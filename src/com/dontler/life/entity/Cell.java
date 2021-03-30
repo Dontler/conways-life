@@ -1,19 +1,31 @@
 package com.dontler.life.entity;
 
+import java.util.Objects;
+
 public class Cell {
 
     private CellType cellType;
+    private final Point position;
 
-    public Cell(CellType cellType) {
+    public Cell(CellType cellType, Point position) {
         this.cellType = cellType;
+        this.position = position;
     }
 
     public CellType getCellType() {
         return cellType;
     }
 
-    public void setCellType(CellType cellType) {
-        this.cellType = cellType;
+    public Point getPosition() {
+        return position;
+    }
+
+    public void die() {
+        this.cellType = CellType.DEAD;
+    }
+
+    public void revive() {
+        this.cellType = CellType.ALIVE;
     }
 
     @Override
@@ -23,11 +35,14 @@ public class Cell {
 
         Cell cell = (Cell) o;
 
-        return cellType == cell.cellType;
+        if (cellType != cell.cellType) return false;
+        return Objects.equals(position, cell.position);
     }
 
     @Override
     public int hashCode() {
-        return cellType != null ? cellType.hashCode() : 0;
+        int result = cellType != null ? cellType.hashCode() : 0;
+        result = 31 * result + (position != null ? position.hashCode() : 0);
+        return result;
     }
 }

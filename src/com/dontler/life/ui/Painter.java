@@ -2,26 +2,25 @@ package com.dontler.life.ui;
 
 import com.dontler.life.entity.CellType;
 import com.dontler.life.entity.Plane;
+import com.dontler.life.entity.Point;
 
 public class Painter {
 
-    private final Plane plane;
     private final PaintConfig config;
 
-    public Painter(Plane plane, PaintConfig config) {
-        this.plane = plane;
+    public Painter(PaintConfig config) {
         this.config = config;
     }
 
-    public void drawPlane() {
+    public void drawPlane(Plane plane) {
         var h = this.config.getHeight();
         var w = this.config.getWidth();
 
         for (int i = 0; i < h; i++) {
             var line = new StringBuilder();
             for (int j = 0; j < w; j++) {
-                var place = this.plane.getPlace(i, j);
-                if (place.getCell().getCellType().equals(CellType.ALIVE)) {
+                var cell = plane.getCell(new Point(j, i));
+                if (cell.getCellType().equals(CellType.ALIVE)) {
                     line.append("*");
                     continue;
                 }
@@ -29,5 +28,9 @@ public class Painter {
             }
             System.out.println(line.toString());
         }
+    }
+
+    public void clearPaint() {
+        System.out.print("\033[H\033[2J");
     }
 }
