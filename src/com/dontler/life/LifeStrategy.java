@@ -16,7 +16,7 @@ public class LifeStrategy {
             return numberOfLiving >= 2 && numberOfLiving <= 3;
         }
 
-        return cell.getCellType().equals(CellType.DEAD) && numberOfLiving == 3;
+        return numberOfLiving == 3;
     }
 
 }
